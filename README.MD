@@ -1,21 +1,28 @@
-# switchOS v0.3
+# RP3P-OS v0.8a
 
-![switchOS Pegasus theme](https://i.imgur.com/4EUrWRV.jpg)
+![Main Menu](https://github.com/hypertacos520/RP3P-OS/blob/master/assets/images/screenshots/MainMenu.png?raw=true)
+![Settings Screen](https://github.com/hypertacos520/RP3P-OS/blob/master/assets/images/screenshots/SettingsScreen.png?raw=true)
 
-![switchOS Pegasus theme](https://i.imgur.com/yFCqOaY.png)
+## RP3P-OS theme for Pegasus Frontend | Based on switchOS and skylineOS
 
-## switchOS theme for Pegasus Frontend
-
-A simple theme that aims to recreate the experience of Nintendo's Switch console. switchOS is a theme for [Pegasus Frontend](http://pegasus-frontend.org/).
+A theme that aims to recreate a game console-like experience through the Pegasus Frontend. RP3P-OS is a theme for [Pegasus Frontend](http://pegasus-frontend.org/).
 
 Platform logos courtesy of [lilbud](https://github.com/lilbud/es-theme-switch).
 
 ## Installation
 
-Simply download the theme and place it in your [Pegasus theme directory](http://pegasus-frontend.org/docs/user-guide/installing-themes/) under a folder called switchOS.
+Simply download the theme and place it in your [Pegasus theme directory](http://pegasus-frontend.org/docs/user-guide/installing-themes/) under a folder called RP3P-OS.
 
 
 ## Version history
+v0.8a
+- Added Video Background support
+- Added Background Music support
+- Added skylineOS based settings menu
+- Enabled 12/24 hr clock setting
+- Enabled 'theme' setting
+- Added OS settings (based on retropie collection)
+
 v0.3
 - Added proper support for variable aspect ratios without decreasing size. Now properly supports 4:3 aspect ratios and should look correct on smaller screens
 - Added logos or collection text for missing eslogos
