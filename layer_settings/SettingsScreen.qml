@@ -46,7 +46,7 @@ id: root
         }
     }
 
-    property var generalPage: {
+    property var osPage: {
         return {
             pageName: "Operating System",
             listmodel: retropieCollection
@@ -55,6 +55,11 @@ id: root
 
     ListModel {
         id: homeSettingsModel
+        function getThemesList(){
+            var fs = require('fs');
+            var files = fs.readdirSync('/assets/themes/');
+            print(files);
+        }
         ListElement {
             settingName: "Theme"
             settingSubtitle: ""
@@ -70,16 +75,11 @@ id: root
             settingSubtitle: "(Blank for no user)"
             setting: "Hypertacos,"
         }
-        ListElement {
-            settingName: "Display Battery Life"
-            settingSubtitle: "(Currently Unavailable)"
-            setting: "No"
-        }
-        ListElement {
-            settingName: "Display OS Settings Tab"
-            settingSubtitle: "(Currently Unavailable)"
-            setting: "Yes"
-        }
+        // ListElement {
+        //     settingName: "Display Battery Life"
+        //     settingSubtitle: "(Currently Unavailable)"
+        //     setting: "No,Yes"
+        // }
     }
 
     property var homePage: {
@@ -89,7 +89,16 @@ id: root
         }
     }
 
-    property var settingsArr: [homePage, generalPage]
+    function makeSettingsList(){
+        if (osPage.listmodel.count){
+            return [homePage, osPage];
+        }
+        else{
+            return [homePage];
+        }
+    }
+    
+    property var settingsArr: makeSettingsList();
 
     property real itemheight: vpx(50)
 

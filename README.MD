@@ -1,7 +1,6 @@
 # RP3P-OS v0.8a
 
 ![Main Menu](https://github.com/hypertacos520/RP3P-OS/blob/master/assets/images/screenshots/MainMenu.png?raw=true)
-![Settings Screen](https://github.com/hypertacos520/RP3P-OS/blob/master/assets/images/screenshots/SettingsScreen.png?raw=true)
 
 ## RP3P-OS theme for Pegasus Frontend | Based on switchOS and skylineOS
 
@@ -9,12 +8,23 @@ A theme that aims to recreate a game console-like experience through the Pegasus
 
 Platform logos courtesy of [lilbud](https://github.com/lilbud/es-theme-switch).
 
+## Notes on Theme Layout
+
+Retropie settings are located in the settings menu under 'OS Settings' instead of in the games library. This is to help create the feel of an actual game console. The OS Settings tab is only visable if there is a 'retropie' collection present. 
+
 ## Installation
 
 Simply download the theme and place it in your [Pegasus theme directory](http://pegasus-frontend.org/docs/user-guide/installing-themes/) under a folder called RP3P-OS.
 
-
 ## Version history
+v0.9a
+- OS Settings tab now only appears if a 'retropie' collection is present
+- 'retropie' collection items do not appear in full library list
+- 'retropie' collection items do not appear in recently played on the main menu
+- Started to add code for battery life monitoring
+- Started to add code for dynamic 'theme' list
+- Removed 'show OS settings' option as it is now unnecessary
+
 v0.8a
 - Added Video Background support
 - Added Background Music support

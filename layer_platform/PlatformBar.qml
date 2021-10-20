@@ -8,10 +8,26 @@ ListView {
     //PUTS GAMES IN ORDER OF LAST PLAYED
     Item {
     id: root
+        //Retropie Collection
+        ListModel {
+        id: retropieCollection
+            function getRetropieIndex()
+            {
+                var i = 0;
+                while(api.collections.get(i).shortName != null)
+                {
+                    if (api.collections.get(i).shortName == "retropie")
+                    {
+                        return i;
+                    }
+                    i++;
+                }
+            }
+        }
         //Games filter
         property alias games: gamesFiltered
-        function currentGame(index) { return api.allGames.get(lastPlayedGames.mapToSource(favoriteGames.mapToSource(index))) }
-        property int max: lastPlayedGames.count //Max games in list. Change to 12 later
+        function currentGame(index) { return api.allGames.get(lastPlayedGames.mapToSource(index)) }
+        property int max: lastPlayedGames.count //Number of games total in list
 
         SortFilterProxyModel {
         id: lastPlayedGames
@@ -20,17 +36,32 @@ ListView {
             sorters: RoleSorter { roleName: "lastPlayed"; sortOrder: Qt.DescendingOrder }
         }
 
-        SortFilterProxyModel {
-        id: favoriteGames
-
-            sourceModel: lastPlayedGames
-            sorters: FilterSorter { ValueFilter { roleName: "favorite"; value: false } }
+        //Remove Retropie Items from List
+        ListModel{
+            id: removedRetropieItems
+            function buildGameList(){
+                for (var i = 0; i < lastPlayedGames.count; i++){
+                    for (var j = 0; j < api.collections.get(retropieCollection.getRetropieIndex()).games.count; j++){ //retropieCollection.count is always 0 for some reason???
+                        if (lastPlayedGames.get(i).title != api.collections.get(retropieCollection.getRetropieIndex()).games.get(j).title){
+                            if (j == api.collections.get(retropieCollection.getRetropieIndex()).games.count - 1){
+                                append(lastPlayedGames.get(i))
+                            }
+                        }
+                        else{
+                            break
+                        }
+                    }
+                }
+            }
+            Component.onCompleted: {
+                buildGameList();
+            }
         }
 
         SortFilterProxyModel {
         id: gamesFiltered
 
-            sourceModel: favoriteGames
+            sourceModel: removedRetropieItems//lastPlayedGames
             filters: IndexFilter { maximumIndex: 11}//max - 1 } //- 1
         }
 
@@ -82,7 +113,11 @@ ListView {
             //showSoftwareScreen();     //this event is being retired in favor of a game launching mechanic
             launchSfx.play()
             root.state = "playgame"
-            api.allGames.get(lastPlayedGames.mapToSource(favoriteGames.mapToSource(currentIndex))).launch() //This code can launch games in the Most Recently Played Order
+            for (var k = 0; k < api.allGames.count; k++){
+                if (api.allGames.get(k).title == removedRetropieItems.get(currentIndex).title){
+                    api.allGames.get(k).launch() //This code can launch games in the Most Recently Played Order without the items in the Retropie Collection
+                }
+            }
     }
 
     Keys.onPressed: {
