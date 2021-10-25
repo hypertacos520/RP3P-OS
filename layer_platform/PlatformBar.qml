@@ -14,8 +14,12 @@ ListView {
             function getRetropieIndex()
             {
                 var i = 0;
-                while(api.collections.get(i).shortName != null)
+                while(i <= api.collections.count)
                 {
+                    if (i == api.collections.count)
+                    {
+                        return -1;
+                    }
                     if (api.collections.get(i).shortName == "retropie")
                     {
                         return i;
@@ -41,6 +45,11 @@ ListView {
             id: removedRetropieItems
             function buildGameList(){
                 for (var i = 0; i < lastPlayedGames.count; i++){
+                    if (retropieCollection.getRetropieIndex() == -1)
+                    {
+                        append(lastPlayedGames.get(i))
+                        continue
+                    }
                     for (var j = 0; j < api.collections.get(retropieCollection.getRetropieIndex()).games.count; j++){ //retropieCollection.count is always 0 for some reason???
                         if (lastPlayedGames.get(i).title != api.collections.get(retropieCollection.getRetropieIndex()).games.get(j).title){
                             if (j == api.collections.get(retropieCollection.getRetropieIndex()).games.count - 1){
