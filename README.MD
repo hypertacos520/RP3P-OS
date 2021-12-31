@@ -1,10 +1,10 @@
-# RP3P-OS v0.8a
+# RP4P-OS v0.9a
 
-![Main Menu](https://github.com/hypertacos520/RP3P-OS/blob/master/assets/images/screenshots/MainMenu.png?raw=true)
+![Main Menu](https://github.com/hypertacos520/RP4P-OS/blob/master/assets/images/screenshots/MainMenu.png?raw=true)
 
-## RP3P-OS theme for Pegasus Frontend | Based on switchOS and skylineOS
+## RP4P-OS theme for Pegasus Frontend | Based on switchOS and skylineOS
 
-A theme that aims to recreate a game console-like experience through the Pegasus Frontend. RP3P-OS is a theme for [Pegasus Frontend](http://pegasus-frontend.org/).
+A theme that aims to recreate a game console-like experience through the Pegasus Frontend. RP4P-OS is a theme for [Pegasus Frontend](http://pegasus-frontend.org/).
 
 Platform logos courtesy of [lilbud](https://github.com/lilbud/es-theme-switch).
 
@@ -14,7 +14,7 @@ Retropie settings are located in the settings menu under 'OS Settings' instead o
 
 ## Installation
 
-Simply download the theme and place it in your [Pegasus theme directory](http://pegasus-frontend.org/docs/user-guide/installing-themes/) under a folder called RP3P-OS.
+Simply download the theme and place it in your [Pegasus theme directory](http://pegasus-frontend.org/docs/user-guide/installing-themes/) under a folder called RP4P-OS.
 
 ## Version history
 v0.9a
